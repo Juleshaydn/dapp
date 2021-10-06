@@ -3,7 +3,7 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import { BytesLike } from "@ethersproject/bytes";
 import { Listener, Provider } from "@ethersproject/providers";
@@ -41,6 +41,8 @@ interface BoxV2Interface extends ethers.utils.Interface {
 
   getEvent(nameOrSignatureOrTopic: "ValueChanged"): EventFragment;
 }
+
+export type ValueChangedEvent = TypedEvent<[BigNumber] & { value: BigNumber }>;
 
 export class BoxV2 extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -118,6 +120,10 @@ export class BoxV2 extends BaseContract {
   };
 
   filters: {
+    "ValueChanged(uint256)"(
+      value?: null
+    ): TypedEventFilter<[BigNumber], { value: BigNumber }>;
+
     ValueChanged(
       value?: null
     ): TypedEventFilter<[BigNumber], { value: BigNumber }>;
