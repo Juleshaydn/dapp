@@ -98,7 +98,7 @@ export default function Demo() {
                       onClick={() => {
                         library
                           .getSigner(account)
-                          .signMessage("👋")
+                          .signMessage("This is an awsome Dapp! 2")
                           .then((signature: any) => {
                             window.alert(`Success!\n\n${signature}`);
                           })
@@ -167,7 +167,7 @@ export default function Demo() {
                       onClick={() => {
                         library
                           .getSigner(account)
-                          .signMessage("👋")
+                          .signMessage("This is an awsome Dapp!")
                           .then((signature: any) => {
                             window.alert(`Success!\n\n${signature}`);
                           })
